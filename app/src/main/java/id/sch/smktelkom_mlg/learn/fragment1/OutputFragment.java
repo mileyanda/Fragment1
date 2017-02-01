@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 /**
@@ -17,12 +18,12 @@ import android.view.ViewGroup;
  * Use the {@link OutputFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class OutputFragment extends Fragment {
+public class OutputFragment extends Fragment
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+{TextView tvHasil;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -62,10 +63,19 @@ public class OutputFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+        Bundle savedInstanceState)
+        {
+        View view=inflater.inflate(R.layout.fragment_output,container,false);
+
+        tvHasil=(TextView)view.findViewById(R.id.textViewHasil);
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_output, container, false);
+        return view;
     }
+
+public void doProses(String nama,String umur)
+        {
+        tvHasil.setText(nama+" ("+umur+" tahun)");
+        }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -104,5 +114,7 @@ public class OutputFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+
+
     }
 }
